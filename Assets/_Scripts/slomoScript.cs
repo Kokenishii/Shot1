@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class slomoScript : MonoBehaviour {
     bool timeSlow;
-   
+   public float SlowSeconds=0.1f;
 	// Use this for initialization
 	void Start () {
-		
-	}
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = Time.timeScale * 0.005f;
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        Debug.Log(Time.timeScale);
-        Time.fixedDeltaTime = Time.timeScale * 0.005f;
+       // Debug.Log(Time.timeScale);
+       Time.fixedDeltaTime = Time.timeScale * 0.005f;
 		if(timeSlow)
         {
             Time.timeScale = Mathf.Lerp(Time.timeScale,0.05f,0.4f);
@@ -42,7 +43,7 @@ public class slomoScript : MonoBehaviour {
     IEnumerator turnFalse()
     {
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(SlowSeconds);
         timeSlow = false;
     }
 }

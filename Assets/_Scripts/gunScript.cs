@@ -1,23 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.SceneManagement;
 
 public class gunScript : MonoBehaviour {
     public GameObject projectilePrefab;
     public Vector3 projectileDirection;
     public float force;
+    bool OneShot = false;
+
 	// Use this for initialization
 	void Start () {
-		
-	}
+        OneShot = true;
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
         // GameObject theGun = GameObject.Find("Gun");
-        RaycastHit hit;
-        Ray shootRay;
-        if (Input.GetMouseButtonDown(0))
+        //TEST
+        if (Input.GetKey(KeyCode.Space))
         {
+
+            EditorSceneManager.LoadScene(0);
+        }
+        //TEST
+
+        if (Input.GetMouseButtonUp(0)&&OneShot==true)
+        {
+            
             Vector3 mousePoint = Input.mousePosition;
             Vector3 targetPosition = Camera.main.ScreenToWorldPoint(mousePoint);
             Vector3 projectileDirection = targetPosition - transform.position;
@@ -30,7 +40,8 @@ public class gunScript : MonoBehaviour {
 
           
           projectileBody.AddForce(new Vector2(force * projectileDirection.x/projectileDirection.magnitude, force * projectileDirection.y / projectileDirection.magnitude), ForceMode2D.Force);
-    
+
+            OneShot = false;
         }
   
 

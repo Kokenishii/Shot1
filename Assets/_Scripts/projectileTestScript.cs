@@ -15,7 +15,9 @@ public class projectileTestScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Vector3 projectileDirection = theGun.GetComponent<gunScript>().projectileDirection;
-      
+      //TEST USED
+
+      //TEST
 	}
     void OnTriggerEnter2D(Collider2D enemy)
     {
@@ -26,7 +28,7 @@ public class projectileTestScript : MonoBehaviour {
     }
     void OnTriggerExit2D()
     {
-        //StartCoroutine(DestorySelf());
+       // StartCoroutine(DestorySelf());
 
     }
     IEnumerator DestorySelf()
