@@ -7,18 +7,17 @@ public class slomoScript : MonoBehaviour {
    public float SlowSeconds=0.1f;
 	// Use this for initialization
 	void Start () {
-        Time.timeScale = 1;
-        Time.fixedDeltaTime = Time.timeScale * 0.005f;
+    
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-       // Debug.Log(Time.timeScale);
+        //Debug.Log(Time.timeScale+","+Time.fixedDeltaTime);
        Time.fixedDeltaTime = Time.timeScale * 0.005f;
 		if(timeSlow)
         {
-            Time.timeScale = Mathf.Lerp(Time.timeScale,0.05f,0.4f);
+         Time.timeScale = Mathf.Lerp(Time.timeScale,0.05f,0.4f);
             Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, 4.9f, 0.05f);
             StartCoroutine(turnFalse());
 
@@ -35,6 +34,7 @@ public class slomoScript : MonoBehaviour {
         if(enemy.gameObject.tag=="enemy")
         { timeSlow = true;
         }
+       
     }
     void OnTriggerExit2D()
     {

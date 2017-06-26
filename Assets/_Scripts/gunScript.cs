@@ -11,6 +11,8 @@ public class gunScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = Time.timeScale * 0.005f;
         OneShot = true;
     }
 	

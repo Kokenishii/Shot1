@@ -31,6 +31,6 @@ public class indicatorScript : MonoBehaviour {
             indicator.SetPosition(1, gameObject.transform.position);
         }
 
-        Debug.Log(mouseWorldPoint.x + "," + mouseWorldPoint.y);
+    //    Debug.Log(mouseWorldPoint.x + "," + mouseWorldPoint.y);
     }
 }

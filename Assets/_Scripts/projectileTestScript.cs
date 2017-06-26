@@ -7,7 +7,9 @@ public class projectileTestScript : MonoBehaviour {
     // Use this for initialization
     GameObject theGun;
     public GameObject particleKill;
+    public GameObject counterObject;
     void Start () {
+
   theGun =  GameObject.Find("Gun");
       transform.position =  theGun.transform.position;
 	}
@@ -26,10 +28,15 @@ public class projectileTestScript : MonoBehaviour {
             particleKill.gameObject.SetActive(true);
         }
     }
-    void OnTriggerExit2D()
+    void OnTriggerExit2D(Collider2D enemy)
     {
-       // StartCoroutine(DestorySelf());
 
+        if (enemy.gameObject.tag == "enemy")
+        {
+            GameObject.FindGameObjectWithTag("counter").GetComponent<countDeath>().enemyKilled += 1;
+      
+            enemy.gameObject.SetActive(false);
+        }
     }
     IEnumerator DestorySelf()
     {
@@ -37,4 +44,6 @@ public class projectileTestScript : MonoBehaviour {
         yield return new WaitForSeconds(3);
         particleKill.gameObject.SetActive(false);
     }
+   
+   
 }
